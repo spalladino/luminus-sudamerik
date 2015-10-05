@@ -24,7 +24,8 @@
                  [migratus "0.8.4"]
                  [conman "0.1.7"]
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]
-                 [org.immutant/web "2.1.0"]]
+                 [org.immutant/web "2.1.0"]
+                 [liberator "0.13"]]
 
   :min-lein-version "2.0.0"
   :uberjar-name "luminus-sudamerik.jar"
@@ -45,8 +46,8 @@
                                  [ring/ring-devel "1.4.0"]
                                  [pjstadig/humane-test-output "0.7.0"]
                                  [mvxcvi/puget "0.8.1"]]
-                  
-                  
+
+
                   :repl-options {:init-ns luminus-sudamerik.core}
                   :injections [(require 'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!)]
