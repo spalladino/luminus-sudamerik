@@ -53,6 +53,13 @@
        {:status 403
         :title "Invalid anti-forgery token"})}))
 
+(defn wrap-allow-cross-origin [handler]
+  (fn [request]
+    (let [response (handler request)]
+      (-> response
+        (assoc-in [:headers "Access-Control-Allow-Origin"] "*")
+        (assoc-in [:headers "Access-Control-Allow-Headers"] "Content-Type")))))
+
 (defn wrap-formats [handler]
   (wrap-restful-format handler {:formats [:json-kw :transit-json :transit-msgpack]}))
 

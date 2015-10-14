@@ -43,7 +43,9 @@
 (def app-routes
   (routes
     (wrap-routes #'home-routes middleware/wrap-csrf)
-    (wrap-routes #'products-routes middleware/wrap-csrf)
+    (-> #'products-routes
+      (wrap-routes middleware/wrap-csrf)
+      (wrap-routes middleware/wrap-allow-cross-origin))
     (route/not-found
       (:body
         (error-page {:status 404
